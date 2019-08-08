@@ -1,0 +1,6 @@
+{
+    "name": "Express_Project_Dev_Version",
+    "mail_server": {
+        "host": "DEV-MAIL_SERVER"
+    }
+}
