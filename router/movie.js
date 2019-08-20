@@ -1,4 +1,4 @@
-//THIS MODULE IS VIEW ONLY FOR USER. USER CAN BOOK MOVIE TICKETS BUT CANT MODIFY THE DETAILS ABOUT THIS,
+//THIS MODULE IS VIEW ONLY FOR USER. USER CAN BOOK MOVIE TICKETS BUT CANT MODIFY THE movie DETAILS 
 //const mongoose = require('mongoose');
 const {Genere} = require('../model/gener');
 const {Movie, validateMovie} = require('../model/movie');
@@ -30,7 +30,7 @@ router.post('/', async function(req,res){
     HTTPdebugger(`Result ${movies} has been saved`);
     return res.send(`Movie details is: ${movies}`) 
 })
-//getting all the documents in app only get info should be presented.
+//getting all the documents in app only get info should be presented. it should be in the home page
 router.get('/', async function(req,res){
     const movie = await Movie
                         .find()

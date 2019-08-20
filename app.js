@@ -16,12 +16,13 @@ const app= express();
 //Calling routers
 const gener =  require('./router/gener');
 const root = require('./router/root');
-const custom = require('./router/customer');
+const custom = require('./router/UserDetails');
 const movie = require('./router/movie');
 const rental = require('./router/rental')
-const registerUser = require('./router/user');
+const registerUser = require('./router/registerUser');
 const login = require('./router/login');
 //const home = require('./router/home');
+ require('./startup/prod')(app);
 
 //connecting to DB
 mongoose.connect('mongodb://localhost/Book_My_Movie')

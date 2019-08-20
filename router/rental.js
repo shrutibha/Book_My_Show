@@ -20,7 +20,8 @@ router.post('/', async function(req,res){
         const movie = await Movie.findById(req.body.movieID)
         if(!movie) return res.status(400).send(`Movie id is not Valid`);
     
-        const custom = await Customer.findById(req.body.customerID);
+        const custom = await Customer.findById(req.body.customerID);//this should be based on registered email
+        //movie should be booked by a resgistered user but it can be booked to anyone.
         if(!custom) return res.status(400).send(`customer iD is not valid`);
     
         const rental = new Rental({

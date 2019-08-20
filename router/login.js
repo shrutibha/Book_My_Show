@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const _ = require('lodash');
 const bcrypt = require('bcrypt');
 const Joi = require('joi');
-const {User} = require('../model/usergin')
+//const {User} = require('../model/usergin')
 const User = require('../model/user')
 
 
@@ -22,7 +22,7 @@ router.post('/', async function(req, res){
         const comp_password = await bcrypt.compare(req.body.password, login.password)
         if(!comp_password) return res.status(400).send("Invalid e-mail or password");
 
-        
+        //return JWT
     }
 })
 
