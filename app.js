@@ -1,17 +1,17 @@
 const express = require('express');
 const mongoose = require('mongoose');
-//const Fawn = require('fawn')
 const logger = require('./logger');
-//const Joi = require('joi');
 const helmet = require('helmet');//
 const morgan = require('morgan');//
 const config = require('config');//
-const DBdebugger = require('debug')('app.db_response:');//debug module instaed of console.log()
-const HTTPdebugger = require('debug')('app.http_response:');//debug module instaed of console.log()
+//const DBdebugger = require('debug')('app.db_response:');//debug module instaed of console.log()
+//const HTTPdebugger = require('debug')('app.http_response:');//debug module instaed of console.log()
 //Initialise debug module before running the app as $env:DEBUG='db_output','http_output'
+//const Joi = require('joi');
+//const Fawn = require('fawn')
 
 //Fawn.init(mongoose);
-const app= express();
+const app = express();
 
 //Calling routers
 const gener =  require('./router/gener');
@@ -26,8 +26,8 @@ const login = require('./router/login');
 
 //connecting to DB
 mongoose.connect('mongodb://localhost/Book_My_Movie')
-    .then(()=> DBdebugger("Connected to mongoDB"))
-    .catch(err => DBdebugger("error while connecting MongoDB", err));
+    .then(()=> console.log("Connected to mongoDB"))
+    .catch(err => console.log("error while connecting MongoDB", err));
 
 app.set('view engine', 'pug');
 app.set('views', './views');
@@ -50,12 +50,12 @@ app.use('/home/login', login);
 
 if(app.get('env') === "development"){
     app.use(morgan('tiny'));
-    HTTPdebugger(`Application name: ${config.get('name')}`);
-    HTTPdebugger(`Mail Server: ${config.get('mail_server.host')}`)
+    console.log(`Application name: ${config.get('name')}`);
+    console.log(`Mail Server: ${config.get('mail_server.host')}`)
 }
 if(app.get('env') ===  "Production"){
-    HTTPdebugger(`Application Name: ${config.get('name')}`);
-    HTTPdebugger(`Mail server is: ${config.get('mail_server.host')}`)
+    console.log(`Application Name: ${config.get('name')}`);
+    console.log(`Mail server is: ${config.get('mail_server.host')}`)
 }
 app.get('/', function(req,res){
     res.render('index', {title: "Express_Project", message: "Welcome to the movie world"});
@@ -65,12 +65,4 @@ app.get('/', function(req,res){
 //(syntax is same for all ENV var)
 const port = process.env.port || 2000;
 
-app.listen(port, ()=>{HTTPdebugger(`Loading the page at ${port} and ENV is ${app.get('env')}`)})
-//and ENV is ${app.get('env')}` or process.env.NODE_ENV
-
-// "use strict"
-// function a(){
-//     this.desc =" ";
-//     console.log(this);
-// }
-// new a();
+app.listen(port, ()=>{console.log(`Loading the page at ${port} and ENV is ${app.get('env')}`)});
