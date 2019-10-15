@@ -67,3 +67,10 @@ const port = process.env.port || 2000;
 
 app.listen(port, ()=>{HTTPdebugger(`Loading the page at ${port} and ENV is ${app.get('env')}`)})
 //and ENV is ${app.get('env')}` or process.env.NODE_ENV
+
+// "use strict"
+// function a(){
+//     this.desc =" ";
+//     console.log(this);
+// }
+// new a();
